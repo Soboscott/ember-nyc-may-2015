@@ -4,6 +4,6 @@ const { attr } = DS;
 
 export default DS.Model.extend({
   url: attr('string'),
-  filename: attr('string'),
+  name: attr('string'),
   uploadedAt: attr('date')
 });

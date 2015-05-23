@@ -1,5 +1,5 @@
 {{#each model as |image|}}
   <img src={{image.url}}>
-  {{image.filename}}
-  {{moment image.uploadedAt}}
+  {{image.name}}
+  {{ago image.uploadedAt}}
 {{/each}}

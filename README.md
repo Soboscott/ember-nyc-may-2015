@@ -1,7 +1,6 @@
-# Ember-nyc-may-2015
+# Ember NYC May 2015
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is the code used in the Ember NYC May meetup about uploading files directly to S3 using Ember.
 
 ## Prerequisites
 
