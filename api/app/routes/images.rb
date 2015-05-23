@@ -22,11 +22,16 @@ end
 get '/api/images/s3_direct' do
   content_type :json
 
-  expires_in = DateTime.now + (10/1440.0) # 10 minutes
+  extension = File.extname(params[:filename]).downcase
+
+  expires_in = Time.now + 10 * 60 # 10 minutes
   S3Direct.new({
     bucket: 'ember-nyc-test',
     expiration: expires_in,
-    key: "uploads/#{SecureRandom.uuid}",
-    acl: 'public-read'
+    key: "uploads/#{SecureRandom.uuid}#{extension}",
+    acl: 'public-read',
+    conditions: [
+      ['starts-with', '$name', '']
+    ]
   }).to_json
 end

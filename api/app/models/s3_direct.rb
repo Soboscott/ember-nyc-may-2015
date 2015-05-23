@@ -5,7 +5,7 @@ require 'json'
 #
 # Generates signed parameters to upload files directly to S3.
 #
-# json = S3Direct.new('<AWSAccessKeyId>', '<AWSSecretKey>', {
+# json = S3Direct.new({
 #   bucket: 'my-bucket',
 #   acl: 'public-read',
 #   key: 'uploads/${filename}',
@@ -28,7 +28,7 @@ class S3Direct
 
   def policy
     Base64.strict_encode64({
-      expiration: @options[:expiration].iso8601,
+      expiration: @options[:expiration].utc.iso8601,
       conditions: conditions
     }.to_json)
   end
