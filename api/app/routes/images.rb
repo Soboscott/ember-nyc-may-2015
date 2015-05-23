@@ -5,9 +5,20 @@ require './app/models/s3_direct'
 
 get '/api/images' do
   content_type :json
-  {
-    images: Image.all
-  }.to_json
+  Image.reverse_order(:uploadedAt).to_json(root: true)
+end
+
+post '/api/images' do
+  image_params = JSON.parse(request.body.read, symbolize_names: true)[:image]
+  image = Image.new({
+    url: image_params[:url],
+    name: image_params[:name],
+    uploadedAt: DateTime.now
+  })
+
+  content_type :json
+  halt 402, 'Not valid' unless image.save
+  image.to_json(root: true)
 end
 
 get '/api/images/s3_direct' do
