@@ -1,5 +1,1 @@
-{{#each model as |image|}}
-  <img src={{image.url}}>
-  {{image.name}}
-  {{ago image.uploadedAt}}
-{{/each}}
+{{photo-stream photos=model}}

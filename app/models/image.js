@@ -5,5 +5,7 @@ const { attr } = DS;
 export default DS.Model.extend({
   url: attr('string'),
   name: attr('string'),
-  uploadedAt: attr('date')
+  uploadedAt: attr('date'),
+  width: attr('number'),
+  height: attr('number')
 });

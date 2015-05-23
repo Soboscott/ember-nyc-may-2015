@@ -5,12 +5,12 @@ require 'json'
 #
 # Generates signed parameters to upload files directly to S3.
 #
-# params = S3Direct.new('<AWSAccessKeyId>', '<AWSSecretKey>', {
+# json = S3Direct.new('<AWSAccessKeyId>', '<AWSSecretKey>', {
 #   bucket: 'my-bucket',
 #   acl: 'public-read',
 #   key: 'uploads/${filename}',
 #   expiration: Date.new + 1
-# }).as_params
+# }).to_json
 #
 class S3Direct
   def initialize(options = {})
@@ -33,7 +33,7 @@ class S3Direct
     }.to_json)
   end
 
-  def as_params
+  def to_json
     {
       url: "https://#{@options[:bucket]}.s3.amazonaws.com",
       credentials: {
@@ -43,7 +43,7 @@ class S3Direct
         acl:            @options[:acl],
         key:            @options[:key]
       }
-    }
+    }.to_json
   end
 
   private

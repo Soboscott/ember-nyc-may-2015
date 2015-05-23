@@ -19,4 +19,44 @@
 
 html, body {
   font-family: 'OfficeCodePro';
+  padding: 0;
+  margin: 0;
+  color: #524846;
+}
+
+.photo-stream {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.photo-tile {
+  border-bottom: 1px solid #9C9491;
+  padding: 10px 0;
+  margin: 0 auto;
+
+  img {
+    width: 100vw;
+  }
+
+  p {
+    text-align: left;
+    padding: 0 10px;
+  }
+}
+
+.progress-bar {
+  position: relative;
+  background: #9C9491;
+  margin: 50px 10vw;
+  width: 80vw;
+  height: 3px;
+
+  div {
+    transition: width 0.5s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #524846;
+  }
 }

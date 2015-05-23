@@ -1,20 +1,18 @@
-require 'json'
+require 'securerandom'
 
 require './app/models/image'
 require './app/models/s3_direct'
 
 get '/api/images' do
   content_type :json
-  Image.reverse_order(:uploadedAt).to_json(root: true)
+  Image.reverse_order(:uploaded_at).to_json(root: true)
 end
 
 post '/api/images' do
-  image_params = JSON.parse(request.body.read, symbolize_names: true)[:image]
-  image = Image.new({
-    url: image_params[:url],
-    name: image_params[:name],
-    uploadedAt: DateTime.now
-  })
+  request.body.rewind
+  data = JSON.parse(request.body.read)
+  image = Image.new.from_json_node(data['image'])
+  image.uploaded_at = DateTime.now
 
   content_type :json
   halt 402, 'Not valid' unless image.save
@@ -28,7 +26,7 @@ get '/api/images/s3_direct' do
   S3Direct.new({
     bucket: 'ember-nyc-test',
     expiration: expires_in,
-    key: "uploads/${filename}",
+    key: "uploads/#{SecureRandom.uuid}",
     acl: 'public-read'
-  }).as_params.to_json
+  }).to_json
 end
