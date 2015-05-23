@@ -5,7 +5,9 @@ require './app/models/s3_direct'
 
 get '/api/images' do
   content_type :json
-  Image.all.to_json
+  {
+    images: Image.all
+  }.to_json
 end
 
 get '/api/images/s3_direct' do

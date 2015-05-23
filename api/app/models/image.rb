@@ -18,7 +18,7 @@ class Image
         {
           id: about['x-amz-request-id'],
           filename: file.key,
-          uploaded_at: about['date'],
+          uploadedAt: about['date'],
           url: file.url(authenticated: false)
         }
       end
