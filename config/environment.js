@@ -6,6 +6,12 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: {
+      'connect-src': "'self' https://ember-nyc-test.s3.amazonaws.com",
+      'img-src': "data: https://ember-nyc-test.s3.amazonaws.com",
+      'style-src': "'self' 'unsafe-inline'"
+    },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
