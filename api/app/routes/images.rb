@@ -26,7 +26,7 @@ get '/api/images/s3_direct' do
 
   expires_in = Time.now + 10 * 60 # 10 minutes
   S3Direct.new({
-    bucket: 'ember-nyc-test',
+    bucket: 'ember-nyc-may-2015',
     expiration: expires_in,
     key: "uploads/#{SecureRandom.uuid}#{extension}",
     acl: 'public-read',
