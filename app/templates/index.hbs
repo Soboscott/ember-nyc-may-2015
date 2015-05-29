@@ -1,1 +1,3 @@
-{{photo-stream photos=model}}
+{{#pl-uploader extensions="jpeg jpg png" for="browse-photos" for-dropzone="app" when-queued="uploadPhoto" as |queue dropzone|}}
+  {{photo-stream photos=model queue=queue dropzone=dropzone}}
+{{/pl-uploader}}
