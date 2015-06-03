@@ -35,6 +35,6 @@
     "ember-disable-proxy-controllers": "^0.7.0",
     "ember-export-application-global": "^1.0.2",
     "ember-moment": "1.1.1",
-    "ember-plupload": "0.6.12"
+    "ember-plupload": "0.6.14"
   }
 }
