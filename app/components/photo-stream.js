@@ -13,6 +13,6 @@ export default Ember.Component.extend({
   width: min('widths'),
 
   style: function () {
-    return `max-width: ${get(this, 'width')}px`;
+    return `max-width: ${get(this, 'width')}px`.htmlSafe();
   }.property('width')
 });

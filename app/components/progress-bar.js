@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 const reads = Ember.computed.reads;
+const get = Ember.get;
 
 export default Ember.Component.extend({
   classNames: ['progress-bar'],
@@ -13,5 +14,9 @@ export default Ember.Component.extend({
   ariaRole: 'progressbar',
   'aria-valuemin': 0,
   'aria-valuemax': 100,
-  'aria-valuenow': reads('value')
+  'aria-valuenow': reads('value'),
+
+  style: function () {
+    return `width: ${get(this, 'value')}%`.htmlSafe();
+  }.property('width')
 });
